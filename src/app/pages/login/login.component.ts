@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.http.post('https://www.e-eventos.com/dymabogados/backend/login_admin.php', user).subscribe((data: any) => {
       console.log(data);
       if (data.respuesta === 1) {
-        this.router.navigate(['ver-registro']);
+        this.router.navigate(['inicio']);
       } else {
         Swal.fire({
           icon: 'error',

@@ -37,9 +37,23 @@
                         <ul class="vertical-nav-menu metismenu">
                             <li class="app-sidebar__heading">Menu</li>
                             <li>
+                                <a [routerLink]="['/inicio']">
+                                    <i class="metismenu-icon pe-7s-rocket"></i>
+                                    Inicio
+                                </a>
+                                
+                            </li>
+                            <li>
                                 <a [routerLink]="['/ver-registro']">
                                     <i class="metismenu-icon pe-7s-rocket"></i>
                                     Registro
+                                </a>
+                                
+                            </li>
+                            <li>
+                                <a [routerLink]="['/nuevo-participante']">
+                                    <i class="metismenu-icon pe-7s-rocket"></i>
+                                    Nuevo participante
                                 </a>
                                 
                             </li>
@@ -51,19 +65,13 @@
                                 
                             </li>
                             <li>
-                                <a [routerLink]="['/codigos-descuento']">
+                                <a [routerLink]="['/nueva-prensa']">
                                     <i class="metismenu-icon pe-7s-rocket"></i>
-                                    Códigos descuento
+                                    Registro prensa
                                 </a>
                                 
                             </li>
-                            <li>
-                                <a href="https://www.e-eventos.com/dymabogados/backend/obtener_excel_registroDyM.php">
-                                    <i class="metismenu-icon pe-7s-rocket"></i>
-                                    Descargar Excel
-                                </a>
-                                
-                            </li>
+                            
         
                             
                             
@@ -148,17 +156,15 @@
                                         <div class="main-card mb-3 card">
                                             <div class="card-header"><i class="header-icon pe-7s-id icon-gradient bg-white"> </i>Datos Generales</div>
                                             <div class="card-body">
-                                                <p>Nombre: <b>{{participante.nombre}} {{participante.apellido}}</b></p>
+                                                <p>Nombre: <b>{{participante.nombre}} {{participante.apellidoPaterno}}</b></p>
                                                 <p>Empresa: <b>{{participante.empresa}}</b></p>
                                                 <p>Puesto: <b>{{participante.puesto}}</b></p>
-                                                <p>Email: <b>{{participante.email}}</b></p>
-                                                <p>Teléfono: <b>{{participante.telefono}}</b></p>
                                                 
                                             
                                             </div>
                                             
                                         </div>
-                                        <div class="main-card mb-3 card">
+                                        <!-- <div class="main-card mb-3 card">
                                             <div class="card-header"><i class="header-icon pe-7s-news-paper icon-gradient bg-white"> </i>Datos de facturación</div>
                                             <div class="card-body">
                                                 <p>RFC: <b>{{participante.nombreInscribe}} {{participante.rfc}}</b></p>
@@ -178,11 +184,11 @@
                                             
                                             </div>
                                             
-                                        </div>
+                                        </div> -->
                                         
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="main-card mb-3 card">
+                                        <!-- <div class="main-card mb-3 card">
                                             <div class="card-header"><i class="header-icon pe-7s-note2 icon-gradient bg-white"> </i>Datos de inscripción</div>
                                             <div class="card-body">
                                                 <p>Id registro: <b>{{participante.id}} </b></p>
@@ -195,19 +201,19 @@
                                             
                                             </div>
                                             
-                                        </div>
+                                        </div> -->
                                         <div class="main-card mb-3 card">
-                                            <div class="card-header"><i class="header-icon pe-7s-users icon-gradient bg-white"> </i>Datos del asistente</div>
+                                            <!-- <div class="card-header"><i class="header-icon pe-7s-users icon-gradient bg-white"> </i>Datos del asistente</div>
                                             <div class="card-body">
                                                 <p>Nombre: <b>{{participante.nombreInscribe}} {{participante.apellidoInscribe}}</b></p>
                                                 <p>Email: <b>{{participante.correoInscribe}}</b></p>
                                                 <p>Teléfono: <b>{{participante.telefonoInscribe}}</b></p>
                                                 
                                             
-                                            </div>
+                                            </div> -->
                                             
                                         </div>
-                                        <div class="main-card mb-3 card">
+                                        <!-- <div class="main-card mb-3 card">
                                             <div class="card-header"><i class="header-icon pe-7s-cash icon-gradient bg-white"></i>Cuota</div>
                                             <div class="card-body">
                                                 <p>Total pagado: <b>{{participante.total | currency}} </b></p>
@@ -215,7 +221,7 @@
                                             
                                             </div>
                                             
-                                        </div>
+                                        </div> -->
                                        
                                     </div>
                                 </div>

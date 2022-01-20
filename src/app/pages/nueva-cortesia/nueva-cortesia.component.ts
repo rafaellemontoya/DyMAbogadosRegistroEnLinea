@@ -28,11 +28,11 @@ export class NuevaCortesiaComponent implements OnInit {
       confirmButtonText: 'Sí'
     }).then((result) => {
       if (result.value) {
-        this.participante.formaPago = '3';
-        this.participante.estatusRegistro = '2';
+        
         this.http.post('https://www.e-eventos.com/dymabogados/backend/insertar_cortesia.php', this.participante).subscribe((data: any) => {
       console.log(data);
       if (data.respuesta === 1) {
+        this.generarPDF(data.id);
         this.participante = new Participante();
         Swal.fire({
           icon: 'success',
@@ -54,5 +54,38 @@ export class NuevaCortesiaComponent implements OnInit {
       }
     });
   }
+  generarPDF(id) {
+    window.scroll(0, 0);
+    const asistente = new Participante();
+    asistente.id = Number(id);
 
+    this.http.post('https://www.e-eventos.com/dymabogados/backend/generarPDF_ipad.php', asistente)
+          .subscribe((data: any) => {
+            console.log(data);
+            if (data.estado_respuesta === 1) {
+              this.imprimirPDF(asistente);
+              Swal.fire(
+
+                'impresión con éxito!',
+                '',
+                'success'
+              );
+            }
+          });
+  }
+  imprimirPDF(asistente: Participante) {
+
+    this.http.post('https://www.e-eventos.com/dymabogados/backend/imprimir_printnode_ipad1.php', asistente)
+          .subscribe((data: any) => {
+            console.log(data);
+            if (data.respuesta === 1) {
+              Swal.fire(
+
+                'impresión con éxito!',
+                '',
+                'success'
+              );
+            }
+          });
+  }
 }

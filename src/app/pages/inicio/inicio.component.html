@@ -1,0 +1,132 @@
+
+                    <div class="app-page-title">
+                        <div class="page-title-wrapper">
+                            <div class="page-title-heading">
+                                <div class="page-title-icon">
+                                    <i class="fa fa-home icon-gradient bg-happy-fisher">
+                                    </i>
+                                </div>
+                                <div>Estadísticas
+                                    <div class="page-title-subheading">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-title-actions">
+                                
+                                <div class="d-inline-block dropdown">
+                                    
+                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link">
+                                                    <i class="nav-link-icon lnr-inbox"></i>
+                                                    <span>
+                                                        Inbox
+                                                    </span>
+                                                    <div class="ml-auto badge badge-pill badge-secondary">86</div>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link">
+                                                    <i class="nav-link-icon lnr-book"></i>
+                                                    <span>
+                                                        Book
+                                                    </span>
+                                                    <div class="ml-auto badge badge-pill badge-danger">5</div>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link">
+                                                    <i class="nav-link-icon lnr-picture"></i>
+                                                    <span>
+                                                        Picture
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a disabled="" class="nav-link disabled">
+                                                    <i class="nav-link-icon lnr-file-empty"></i>
+                                                    <span>
+                                                        File Disabled
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>    </div>
+                    </div>            <ul class="body-tabs body-tabs-layout tabs-animated body-tabs-animated nav">
+                        
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane tabs-animation fade active show" id="tab-content-0" role="tabpanel">
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                        <h5 class="card-title" style="color: black;">Registrados: {{totalRegistrados}} </h5>
+                                            <h5 class="card-title" style="color: black;">Con asistencia: {{totalAsistentes}}</h5>
+                                            <h5 class="card-title" style="color: black;">Total: {{totalRegistro}}</h5>
+                                            <google-chart 
+                                            [title]="titleGraph2"
+                                            [options]="myOptionsAsistente"
+                                            [type]="typeGraph2"
+                                            [data]="dataGraph2"
+                                            [columnNames]="columnNamesGraph2"
+                                            [options]="optionsGraph2"
+                                            [width]="widthGraph2"
+                                            [height]="heightGraph2"
+                                            [dynamicResize]="true">
+                                         </google-chart>
+                                        </div>
+                                    </div>
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                            <h5 class="card-title">Polar Chart</h5>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+                        <!-- <div class="tab-pane tabs-animation fade" id="tab-content-1" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                            <h5 class="card-title">Vertical Bars</h5>
+                                            <canvas id="canvas" height="367" class="chartjs-render-monitor" width="735" style="display: block; width: 735px; height: 367px;"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                            <h5 class="card-title">Horizontal Bars</h5>
+                                            <canvas id="chart-horiz-bar" height="367" class="chartjs-render-monitor" width="735" style="display: block; width: 735px; height: 367px;"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Line Chart</h5>
+                                            <div style="height: 400px"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                                <canvas id="line-chart" height="400" class="chartjs-render-monitor" width="735" style="display: block; width: 735px; height: 400px;"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="main-card mb-3 card">
+                                        <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                                            <h5 class="card-title">Stacked Bars</h5>
+                                            <canvas id="stacked-bars-chart" height="367" class="chartjs-render-monitor" width="735" style="display: block; width: 735px; height: 367px;"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+        
+                 
+                
+        

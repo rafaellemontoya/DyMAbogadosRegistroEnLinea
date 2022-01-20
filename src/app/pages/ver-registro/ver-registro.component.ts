@@ -4,7 +4,9 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Participante } from '../../interfaces/participante.interface';
 import Swal from 'sweetalert2';
+import { SharedService } from '../../services/shared.service';
 
+declare function customInitFunctions(): any;
 @Component({
   selector: 'app-ver-registro',
   templateUrl: './ver-registro.component.html',
@@ -32,20 +34,21 @@ export class VerRegistroComponent implements OnInit {
   estadoImprimiendo = false;
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, public shared: SharedService) { }
 
   ngOnInit() {
-    this.isLoggedIn();
-    // this.getInfo();
+    // this.isLoggedIn();
+    customInitFunctions();
+    this.getInfo();
     }
 
   getInfo() {
-    this.http.get('https://www.e-eventos.com/dymabogados/backend/obtener_todos_participantes.php').subscribe((data: any) => {
+    this.http.get('https://www.themyt.com/imef2021/backend/obtener_todos_participantes.php').subscribe((data: any) => {
       console.log(data);
       // tslint:disable-next-line:no-string-literal
       // this.items = data;
-      this.usersJson = Array.of(data);
-      console.log (this.usersJson);
+      this.usersJson = data;
+      // console.log (this.usersJson);
     });
   }
 
@@ -71,7 +74,7 @@ export class VerRegistroComponent implements OnInit {
     this.nombreEliminar = nombre;
 
   }
- 
+
 
   rechazar(id) {
     const participante = new Participante();
@@ -92,6 +95,7 @@ export class VerRegistroComponent implements OnInit {
         this.http.post('https://www.e-eventos.com/cbm/enp20/backend/rechazar_participante.php', participante)
           .subscribe((data: any) => {
             if (data.respuesta === 1) {
+
               console.log(data);
               this.getInfo();
               Swal.fire(
@@ -108,7 +112,7 @@ export class VerRegistroComponent implements OnInit {
 
   }
 
-  aceptar(id) {
+  aceptarEfectivo(id) {
     const participante = new Participante();
     participante.id = id;
     console.log(participante);
@@ -123,10 +127,46 @@ export class VerRegistroComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.value) {
-        this.http.post('https://www.e-eventos.com/dymabogados/backend/aceptar_participante.php', participante)
+        this.http.post('https://www.e-eventos.com/dymabogados/backend/aceptar_participante_efectivo.php', participante)
           .subscribe((data: any) => {
             console.log(data);
             if (data.respuesta === 1) {
+              this.generarPDF(id);
+              Swal.fire(
+
+                'Acción realizada correctamente!',
+                'El estatus ha sido cambiado a pagado.',
+                'success'
+              );
+              this.getInfo();
+            }
+          });
+
+      }
+    });
+
+  }
+  aceptarTarjeta(id) {
+    const participante = new Participante();
+    participante.id = id;
+    console.log(participante);
+    Swal.fire({
+      title: 'Estás seguro de querer aceptarlo?',
+      text: 'Se enviará la notificación al correo asignado',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.value) {
+
+        this.http.post('https://www.e-eventos.com/dymabogados/backend/aceptar_participante_tarjeta.php', participante)
+          .subscribe((data: any) => {
+            console.log(data);
+            if (data.respuesta === 1) {
+              this.generarPDF(id);
               Swal.fire(
 
                 'Acción realizada correctamente!',
@@ -147,7 +187,6 @@ export class VerRegistroComponent implements OnInit {
     console.log(participante);
     Swal.fire({
       title: 'Estás seguro marcar como generada la factura?',
-      
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -180,20 +219,20 @@ export class VerRegistroComponent implements OnInit {
         return 'Rechazado';
         break;
         case '0':
-          return 'Pendiente de pago';
+          return 'Pendiente de asistencia';
           break;
         case '1':
-          return 'Pagado';
+          return 'Asistencia';
           break;
           case '2':
-            return 'Aceptado (Cortesia)';
+            return 'Aceptado ';
             break;
             case '3':
-              return 'Pendiente de pago';
+              return '';
               break;
     }
   }
-  getClaseEstadoPago(id): string{
+  getClaseEstadoPago(id): string {
     switch (id) {
       case '-1':
         return 'text-warning';
@@ -230,7 +269,7 @@ export class VerRegistroComponent implements OnInit {
               break;
     }
   }
-  getClaseEstadoFactura(id): string{
+  getClaseEstadoFactura(id): string {
     switch (id) {
       case '-1':
         return 'text-warning';
@@ -322,10 +361,10 @@ export class VerRegistroComponent implements OnInit {
       }
     });
   }
-  getFormaPago(formaPago){
-    if(formaPago==='1'){
+  getFormaPago(formaPago) {
+    if (formaPago === '1') {
       return 'Paypal';
-    }else if(formaPago ==='2'){
+    } else if (formaPago === '2') {
       return 'Transferencia';
     }
   }
@@ -362,6 +401,62 @@ export class VerRegistroComponent implements OnInit {
       }
     });
 
+  }
+  generarPDF(id) {
+    console.log(this.estadoImprimiendo);
+    this.imprimiendo = true;
+    this.estadoImprimiendo = true;
+    window.scroll(0, 0);
+    const asistente = new Participante();
+    asistente.id = id;
+    console.log(asistente.id);
+
+    console.log(this.estadoImprimiendo);
+    this.http.post('https://www.themyt.com/imef2021/backend/generarPDF_ipad.php', asistente)
+          .subscribe((data: any) => {
+            console.log(data);
+
+            if (data.estado_respuesta === 1) {
+              this.imprimirPDF(asistente);
+              Swal.fire(
+              {
+                title: 'Mandando a imprimir',
+                text: 'Espera por favor',
+                imageUrl: 'https://themyt.com/loader.gif',
+                imageWidth: 200,
+                showConfirmButton: false,
+                imageAlt: 'loading',
+                allowOutsideClick: false
+              }
+              ).then((d: any) => {
+                this.getInfo();
+              });
+            }
+          });
+  }
+  imprimirPDF(asistente: Participante) {
+    console.log('Imprimiendo..');
+    this.estadoImprimiendo = false;
+    asistente.noImpresora = this.shared.getNoImpresora();
+    this.http.post('backend/imprimir_printnode_ipad1.php', asistente)
+          .subscribe((data: any) => {
+            console.log(data);
+            if (data.statusMessage === 'Created') {
+              Swal.fire(
+
+                'Impresión con éxito!',
+                '',
+                'success'
+              );
+            } else {
+              Swal.fire(
+
+                'Error al imprimir',
+                data.statusMessage,
+                'error'
+              );
+            }
+          });
   }
 
 }

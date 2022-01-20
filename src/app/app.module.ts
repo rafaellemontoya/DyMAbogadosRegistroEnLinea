@@ -23,6 +23,13 @@ import { FiltroFormaPagoPipe } from './pipes/forma-pago-filtro.pipe';
 import { FiltroEstatusPagoPipe } from './pipes/estatus-pago-filtro.pipe';
 import { AgregarDatosFacturaComponent } from './pages/agregar-datos-factura/agregar-datos-factura.component';
 import { NuevaCortesiaComponent } from './pages/nueva-cortesia/nueva-cortesia.component';
+import { NuevaPrensaComponent } from './pages/nueva-prensa/nueva-prensa.component';
+import { NuevoParticipanteComponent } from './pages/nuevo-participante/nuevo-participante.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { VerAcompanantesComponent } from './pages/ver-acompanantes/ver-acompanantes.component';
+import { NuevoAcompananteComponent } from './pages/nuevo-acompanante/nuevo-acompanante.component';
+import { ConfiguracionComponent } from './pages/configuracion/configuracion.component';
 
 const routes: Routes = [
 
@@ -47,6 +54,12 @@ const routes: Routes = [
     FiltroEstatusPagoPipe,
     AgregarDatosFacturaComponent,
     NuevaCortesiaComponent,
+    NuevaPrensaComponent,
+    NuevoParticipanteComponent,
+    InicioComponent,
+    VerAcompanantesComponent,
+    NuevoAcompananteComponent,
+    ConfiguracionComponent,
 
 
   ],
@@ -57,6 +70,7 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    GoogleChartsModule,
     SweetAlert2Module.forRoot(),
     RouterModule.forRoot(routes, { useHash: true })
   ],

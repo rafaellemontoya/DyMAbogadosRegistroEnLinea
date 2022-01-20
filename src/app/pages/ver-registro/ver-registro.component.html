@@ -1,100 +1,22 @@
-<div class="app-main">
-    <div class="app-sidebar sidebar-shadow">
-        <div class="app-header__logo">
-            <div class="logo-src"></div>
-            <div class="header__pane ml-auto">
-                <div>
-                    <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
-                        <span class="hamburger-box">
-                            <span class="hamburger-inner"></span>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="app-header__mobile-menu">
-            <div>
-                <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                    <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                    </span>
-                </button>
-            </div>
-        </div>
-        <div class="app-header__menu">
-            <span>
-                <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                    <span class="btn-icon-wrapper">
-                        <i class="fa fa-ellipsis-v fa-w-6"></i>
-                    </span>
-                </button>
-            </span>
-        </div>    
-        <div class="scrollbar-sidebar ps ps--active-y">
-            <div class="app-sidebar__inner">
-                <ul class="vertical-nav-menu metismenu">
-                    <li class="app-sidebar__heading">Menu</li>
-                    <li>
-                        <a [routerLink]="['/ver-registro']">
-                            <i class="metismenu-icon pe-7s-rocket"></i>
-                            Registro
-                        </a>
-                        
-                    </li>
-                    <li>
-                        <a [routerLink]="['/nueva-cortesia']">
-                            <i class="metismenu-icon pe-7s-rocket"></i>
-                            Nueva cortesía
-                        </a>
-                        
-                    </li>
-                    <li>
-                        <a [routerLink]="['/codigos-descuento']">
-                            <i class="metismenu-icon pe-7s-rocket"></i>
-                            Códigos descuento
-                        </a>
-                        
-                    </li>
-                    <li>
-                        <a href="https://www.e-eventos.com/dymabogados/backend/obtener_excel_registroDyM.php">
-                            <i class="metismenu-icon pe-7s-rocket"></i>
-                            Descargar Excel
-                        </a>
-                        
-                    </li>
 
-                    <li>
-                        <a style="cursor: pointer;" (click)="logout()">
-                            <i class="metismenu-icon pe-7s-rocket"></i>
-                            Cerrar sesión
-                        </a>
-                        
-                    </li>
-                    
-                    
-                </ul>
-            </div>
-        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 661px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 462px;"></div></div></div>
-    </div> 
-       <div class="app-main__outer">
-        <div class="app-main__inner">
             <div class="app-page-title">
                 <div class="page-title-wrapper">
                     <div class="page-title-heading">
-                        <!-- <div class="page-title-icon">
-                            <i class="pe-7s-medal icon-gradient bg-tempting-azure">
+                        <div class="page-title-icon">
+                            <i class=" fa fa-address-book icon-gradient bg-malibu-beach">
                             </i>
                         </div>
                         <div>Registro
                             <div class="page-title-subheading">
+                                Número de impresora: {{shared.getNoImpresora() }}
                             </div>
-                        </div> -->
-                        <img src="https://www.e-eventos.com/dlvmr/2020/reforma_laboral/admin/assets/banner.jpg" style="    max-width: 100%; 
+                        </div>
+                        <!-- <img src="https://www.e-eventos.com/dlvmr/2020/reforma_laboral/admin/assets/banner.jpg" style="    max-width: 100%; 
                         width: auto\9;
                         height: auto;
                         vertical-align: middle;
                         border: 0;
-                        -ms-interpolation-mode: bicubic;">
+                        -ms-interpolation-mode: bicubic;"> -->
                     </div>
                         </div>
             </div>            <div class="main-card mb-3 card">
@@ -106,7 +28,7 @@
                         </div>
                             <div class="row"><div class="col-sm-12">
                                 <div class="row">
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="input-group">
                                             <input [(ngModel)]="terminoBusquedaNombre" type="text" autocomplete="off" class="form-control" placeholder="Nombre...">
                                             <div class="input-group-append">
@@ -114,7 +36,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="input-group">
                                             <input [(ngModel)]="terminoBusquedaApellido" type="text" class="form-control" placeholder="Apellido...">
                                             <div class="input-group-append">
@@ -122,7 +44,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-2">
+                                    <div class="col-sm-4">
                                         <div class="input-group">
                                             <input [(ngModel)]="terminoBusquedaEmpresa" type="text" class="form-control" placeholder="Empresa...">
                                             <div class="input-group-append">
@@ -131,22 +53,15 @@
                                         </div>
                                     </div>
                             
-                                 <div class="col-sm-2">
+                                 <!-- <div class="col-sm-2">
                                     <div class="input-group">
                                         <input [(ngModel)]="terminoBusquedaEstatusPago" type="text" class="form-control" placeholder="Estatus pago...">
                                         <div class="input-group-append">
                                             <button (click)="terminoBusquedaEstatusPago = ''" class="btn btn-primary">X</button>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="input-group">
-                                        <input [(ngModel)]="terminoFormaPago" type="text" class="form-control" placeholder="Forma de pago...">
-                                        <div class="input-group-append">
-                                            <button (click)="terminoFormaPago = ''" class="btn btn-primary">X</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> -->
+                              
 
                                 <!-- <div class="col-sm-2">
                                     <div class="input-group">
@@ -165,64 +80,38 @@
                             <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 219.2px;" aria-label="Position: activate to sort column ascending">Apellido</th>
                             
                             <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 42.2px;" aria-label="Age: activate to sort column ascending">Empresa</th> 
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Office: activate to sort column ascending">Referencia</th>
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 42.2px;" aria-label="Age: activate to sort column ascending">Forma pago</th> 
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100.2px;" aria-label="Office: activate to sort column ascending">Puesto</th>
                             <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 95.2px;" aria-label="Start date: activate to sort column ascending">Estatus</th>
-                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 95.2px;" aria-label="Start date: activate to sort column ascending">Factura</th>
-                            <th >Opciones</th>
+                            <th >Imprimir</th>
                             
-                            <th >Información</th>
+                            <!-- <th ></th> -->
+                            
                         </tr>
                         </thead>
                         <tbody>
                         
                             <!-- *ngFor="let item of usersJson[0] " -->
-                        <tr *ngFor="let item of usersJson[0] | filtroNombre: terminoBusquedaNombre| filtroApellido: terminoBusquedaApellido | filtroEmpresa: terminoBusquedaEmpresa | filtroEstatusPago: terminoBusquedaEstatusPago | filtroFormaPago: terminoFormaPago" role="row" class="odd">
-                            <td tabindex="0" class="sorting_1">{{item.id_registro}}</td>
+                        <tr *ngFor="let item of usersJson | filtroNombre: terminoBusquedaNombre| filtroApellido: terminoBusquedaApellido | filtroEmpresa: terminoBusquedaEmpresa | filtroEstatusPago: terminoBusquedaEstatusPago | filtroFormaPago: terminoFormaPago" role="row" class="odd">
+                            <td tabindex="0" class="sorting_1">{{item.id}}</td>
                             <td >{{item.nombre}}</td>
-                            <td>{{item.apellido}}</td>
+                            <td>{{item.apellidoPaterno}} {{item.apellidoMaterno}} </td>
                             
                             <td>{{item.empresa}}</td>
-                            <td>{{item.referencia}}</td>
-                            <td>{{getFormaPago(item.forma_pago)}}</td>
-                            <td><p [ngClass]="getClaseEstadoPago(item.status_registro)">{{getTextoEstadoPago(item.status_registro)}}</p></td>
-                            <td><p [ngClass]="getClaseEstadoFactura(item.estatus_factura)">{{getTextoEstadoFactura(item.estatus_factura)}}</p></td>
+                            <td>{{item.puesto}}</td>
+                            <td>
+                                
+                                <p [ngClass]="getClaseEstadoPago(item.estatusAsistencia)">{{getTextoEstadoPago(item.estatusAsistencia)}}</p>
+                                
+                                
+                            </td>
+                            <td>
+                                <a style="cursor: pointer;" (click)="generarPDF(item.id)">
+                                <div class="font-icon-wrapper"><i class="pe-7s-print"> </i>
+                                    <p>Imprimir</p></div>
+                                </a>
+                            </td>
                             
 
-                            <td><div class="dropdown d-inline-block">
-                                <button type="button" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" class="mb-2 mr-2 dropdown-toggle btn btn-primary">Cambiar estatus</button>
-                                <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu-lg dropdown-menu" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -379px, 0px);">
-                                    <div class="dropdown-menu-header">
-                                        <div class="dropdown-menu-header-inner bg-happy-itmeo">
-                                            <div class="menu-header-image" style="background-image: url('assets/images/dropdown-header/city4.jpg');"></div>
-                                            <div class="menu-header-content"><h5 class="menu-header-title">Opciones</h5><h6 class="menu-header-subtitle">Selecciona una opción</h6></div>
-                                        </div>
-                                    </div>
-                                    <div class="grid-menu grid-menu-2col">
-                                        <div class="no-gutters row">
-                                            <div class="col-sm-6">
-                                                <button (click)="eliminar(item.id_registro)" class="btn-icon-vertical btn-transition btn btn-outline-primary"><i class="pe-7s-trash btn-icon-wrapper"> </i>Eliminar</button>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <button class="btn-icon-vertical btn-transition btn btn-outline-warning"[routerLink]="['/editar-registro',item.id_registro]"><i class="pe-7s-pen btn-icon-wrapper"> </i>Editar</button>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <button (click)="aceptar(item.id_registro)" class="btn-icon-vertical btn-transition btn btn-outline-success"><i class="pe-7s-cash btn-icon-wrapper"> </i>Pagado</button>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <button (click)="aceptarFactura(item.id_registro)" class="btn-icon-vertical btn-transition btn btn-outline-success"><i class="pe-7s-news-paper btn-icon-wrapper"> </i>Factura generada</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <ul class="nav flex-column">
-                                        <li class="nav-item-divider nav-item"></li>
-                                        <li class="nav-item-btn text-center nav-item">
-                                            <button class="btn-shadow btn btn-primary btn-sm">Submit</button>
-                                        </li>
-                                    </ul> -->
-                                </div>
-                            </div>
-                        </td>
                             <!-- <td>
                                 <a style="cursor: pointer;" (click)="aceptar(item.id_registro)">
                                 <div class="font-icon-wrapper"><i class="fa fa-fw" aria-hidden="true" title="Copy to use check-circle"></i>
@@ -242,12 +131,12 @@
                         </a>
                         
                     </td> -->
-                    <td>
+                    <!-- <td>
                         <a style="cursor: pointer;" [routerLink]="['/ver-participante',item.id_registro]">
                         <div class="font-icon-wrapper"><i class="pe-7s-info"> </i>
                             <p>Info completa</p></div>
                         </a>
-                    </td>
+                    </td> -->
                         </tr>
                         
                     </tbody>
@@ -256,6 +145,4 @@
                     
             </div>
         </div>
-        
-    </div>
-</div>
+      

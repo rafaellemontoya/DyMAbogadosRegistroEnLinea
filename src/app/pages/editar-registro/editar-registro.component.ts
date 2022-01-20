@@ -79,36 +79,7 @@ export class EditarRegistroComponent implements OnInit {
     .subscribe((data: any) => {
       console.log (data);
       this.participante.nombre = data.nombre;
-      this.participante.apellido = data.apellido;
-      this.participante.email = data.email;
-      this.participante.puesto = data.puesto;
-      this.participante.empresa = data.empresa;
-      this.participante.estado = data.estado;
-      this.participante.telefono = data.telefono;
-      this.participante.nombreInscribe = data.nombreInscribe;
-      this.participante.apellidoInscribe = data.apellidoInscribe;
-      this.participante.telefonoInscribe = data.telefonoInscribe;
-      this.participante.correoInscribe = data.correoInscribe;
-      this.participante.monto = data.monto;
-      this.participante.codigoDescuento = data.codigoDescuento;
-      this.participante.formaPago = data.formaPago;
-      this.participante.confirmacionPaypal = data.confirmacionPaypal;
-      this.participante.referencia = data.referencia;
-      this.participante.rfc = data.rfc;
-      this.participante.calle = data.calle;
-      this.participante.numeroExterior = data.numeroExterior;
-      this.participante.numeroInterior = data.numeroInterior;
-      this.participante.municipio = data.municipio;
-      this.participante.colonia = data.colonia;
-      this.participante.cp = data.cp;
-      this.participante.correoFactura = data.correoFactura;
-      this.participante.usoCFDI = data.usoCFDI;
-      this.participante.formaPagoFiscal = data.formaPagoFiscal;
-      this.participante.fechaRegistro = data.fechaRegistro;
-      this.participante.estatusRegistro = data.estatusRegistro;
-      this.participante.idGrupo = data.idGrupo;
-      this.participante.idInscribe = data.idInscribe;
-      this.participante.total = data.total;
+      
 
 
 

@@ -1,0 +1,147 @@
+
+            <div class="app-page-title">
+                <div class="page-title-wrapper">
+                    <div class="page-title-heading">
+                        <div class="page-title-icon">
+                            <i class=" fa fa-users icon-gradient bg-ripe-malin">
+                            </i>
+                        </div>
+                        <div>Acompañantes
+                            <div class="page-title-subheading">
+                                Impresora actual: {{shared.getNoImpresora()}}
+                            </div>
+                        </div>
+                        <!-- <img src="https://www.e-eventos.com/dlvmr/2020/reforma_laboral/admin/assets/banner.jpg" style="    max-width: 100%; 
+                        width: auto\9;
+                        height: auto;
+                        vertical-align: middle;
+                        border: 0;
+                        -ms-interpolation-mode: bicubic;"> -->
+                    </div>
+                        </div>
+            </div>            <div class="main-card mb-3 card">
+                <div class="card-body">
+                    <div id="example_wrapper" class="dataTables_wrapper dt-bootstrap4"><div class="row">
+                        <div class="col-sm-12 col-md-6"><div class="dataTables_length" id="example_length">
+                            </div>
+                            <!-- <div class="col-sm-12 col-md-6"><div id="example_filter" class="dataTables_filter"><label>Buscar:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="example"></label></div></div> -->
+                        </div>
+                            <div class="row"><div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input [(ngModel)]="terminoBusquedaNombre" type="text" autocomplete="off" class="form-control" placeholder="Nombre...">
+                                            <div class="input-group-append">
+                                                <button (click)="terminoBusquedaNombre = ''" class="btn btn-primary">X</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input [(ngModel)]="terminoBusquedaApellido" type="text" class="form-control" placeholder="Apellido...">
+                                            <div class="input-group-append">
+                                                <button (click)="terminoBusquedaApellido = ''" class="btn btn-primary">X</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input [(ngModel)]="terminoBusquedaEmpresa" type="text" class="form-control" placeholder="Empresa...">
+                                            <div class="input-group-append">
+                                                <button (click)="terminoBusquedaEmpresa = ''" class="btn btn-primary">X</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                 <!-- <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input [(ngModel)]="terminoBusquedaEstatusPago" type="text" class="form-control" placeholder="Estatus pago...">
+                                        <div class="input-group-append">
+                                            <button (click)="terminoBusquedaEstatusPago = ''" class="btn btn-primary">X</button>
+                                        </div>
+                                    </div>
+                                </div> -->
+                              
+
+                                <!-- <div class="col-sm-2">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-secondary">X</button>
+                                        </div>
+                                    </div>
+                                </div>  -->
+                            </div>
+                                <table style="width: 100%;" id="example" class="table table-hover table-striped table-bordered dataTable dtr-inline" role="grid" aria-describedby="example_info">
+                        <thead>
+                        <tr role="row">
+                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">Id participante</th>
+                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 140.2px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">Nombre</th>
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 219.2px;" aria-label="Position: activate to sort column ascending">Apellido</th>
+                            
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 42.2px;" aria-label="Age: activate to sort column ascending">Participante</th> 
+                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 95.2px;" aria-label="Start date: activate to sort column ascending">Estatus</th>
+                            <th >Imprimir</th>
+                            
+                            <!-- <th ></th> -->
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        
+                            <!-- *ngFor="let item of usersJson[0] " -->
+                        <tr *ngFor="let item of usersJson | filtroNombre: terminoBusquedaNombre| filtroApellido: terminoBusquedaApellido | filtroEmpresa: terminoBusquedaEmpresa | filtroEstatusPago: terminoBusquedaEstatusPago | filtroFormaPago: terminoFormaPago" role="row" class="odd">
+                            <td tabindex="0" class="sorting_1">{{item.id}}</td>
+                            <td >{{item.nombreAcompanante}}</td>
+                            <td>{{item.paternoAcompanante}} {{item.maternoAcompanante}} </td>
+                            
+                            <td>{{item.nombre}} {{item.apellidoPaterno}} {{item.apellidoMaterno}}</td>
+                            
+                            <td>
+                                
+                                <p [ngClass]="getClaseEstadoPago(item.estatusAcompanante)">{{getTextoEstadoPago(item.estatusAcompanante)}}</p>
+                                
+                                
+                            </td>
+                            <td>
+                                <a style="cursor: pointer;" (click)="generarPDF(item.id)">
+                                <div class="font-icon-wrapper"><i class="pe-7s-print"> </i>
+                                    <p>Imprimir</p></div>
+                                </a>
+                            </td>
+                            
+
+                            <!-- <td>
+                                <a style="cursor: pointer;" (click)="aceptar(item.id_registro)">
+                                <div class="font-icon-wrapper"><i class="fa fa-fw" aria-hidden="true" title="Copy to use check-circle"></i>
+                                <p>Aceptar</p>
+
+                                
+                            </div>
+                        </a>
+                        </td> -->
+                        <!-- <td>
+                            <a style="cursor: pointer;" (click)="rechazar(item.id_registro)">
+                            <div class="font-icon-wrapper">
+                                <i class="fa fa-fw" aria-hidden="true" title="Copy to use times-circle"></i>
+                                <p>Rechazar</p>
+                            
+                            </div>
+                        </a>
+                        
+                    </td> -->
+                    <!-- <td>
+                        <a style="cursor: pointer;" [routerLink]="['/ver-participante',item.id_registro]">
+                        <div class="font-icon-wrapper"><i class="pe-7s-info"> </i>
+                            <p>Info completa</p></div>
+                        </a>
+                    </td> -->
+                        </tr>
+                        
+                    </tbody>
+                        
+                    </table></div></div>
+                    
+            </div>
+        </div>
+      
